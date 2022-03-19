@@ -1,0 +1,23 @@
+BOT_TOKEN 5264923914:AAFo1KyWQXKQxlXKolkJkTVu_YZwkGwuJlI
+CHAT_ID -622421993
+
+curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "-622421993", "text": "This is a test qa.guru"}' https://api.telegram.org/bot5264923914:AAFo1KyWQXKQxlXKolkJkTVu_YZwkGwuJlI/sendMessage
+
+// Local in multiple lines
+java \
+"-DprojectName=Local test run" \
+"-Denv=PROD" \
+"-DreportLink=qa.guru/" \
+"-Dcomm=Any comment here" \
+"-Dconfig.file=notifications/telegram_config.json" \
+-jar notifications/allure-notifications-3.1.2.jar
+
+
+// Jenkins
+java \
+"-DprojectName=${PROJECT_NAME}" \
+"-Denv=${ENVIRONMENT}" \
+"-DreportLink=${BUILD_URL}" \
+"-Dcomm=Any comment here" \
+"-Dconfig.file=notifications/telegram_config.json" \
+-jar notifications/allure-notifications-3.1.2.jar
